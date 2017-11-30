@@ -67,7 +67,18 @@ partition via Lilo or Grub image from a hard disk partition.
 
 	title Memtest86
 	    kernel (hd0,0)/memtest.bin
-
+	    
+  To boot from a disk partition via Grub2
+   1) Copy the image file to a permanent location (ie. /boot/memtest.bin).
+   2) Add an entry in the Grub2 config file (/boot/grub2/grub.cfg) to boot
+      memtest86.  Only the title and kernel fields need to be specified. 
+      The following is a sample Grub2 entry for booting memtest86:
+    
+	linux16 /memtest.bin console=ttyS0,115200
+	
+   3) Most Distros provide a Grub2 config for memtest. 
+      Usually at /etc/grub.d/20_memtest86+
+    
   To boot from a disk partition via Lilo
    1) Copy the image file to a permanent location (ie. /boot/memtest.bin).
    2) Add an entry in the lilo config file (usually /etc/lilo.conf) to boot
